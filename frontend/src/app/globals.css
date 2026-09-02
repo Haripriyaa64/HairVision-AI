@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #050505;
+  --foreground: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+/* ---------------------------------------------------------
+   PREMIUM SCROLLBAR
+--------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ---------------------------------------------------------
+   BACKGROUND GRID
+--------------------------------------------------------- */
+
+.hv-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 85%
+  );
+}
+
+/* ---------------------------------------------------------
+   GLOW
+--------------------------------------------------------- */
+
+.hv-glow {
+  filter: blur(110px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   GLASS
+--------------------------------------------------------- */
+
+.hv-glass {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* ---------------------------------------------------------
+   SHIMMER
+--------------------------------------------------------- */
+
+.hv-shimmer {
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.16) 45%,
+    transparent 70%
+  );
+
+  background-size: 220% 100%;
+  animation: shimmer 2.8s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 220% 0;
+  }
+
+  100% {
+    background-position: -220% 0;
+  }
+}
+
+/* ---------------------------------------------------------
+   FLOAT
+--------------------------------------------------------- */
+
+.hv-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ---------------------------------------------------------
+   PULSE RING
+--------------------------------------------------------- */
+
+.hv-pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------
+   UPLOAD DROPZONE
+--------------------------------------------------------- */
+
+.hv-dropzone {
+  transition:
+    border-color 300ms ease,
+    background 300ms ease,
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.hv-dropzone:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.hv-dropzone-active {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 80px rgba(255, 255, 255, 0.05);
+}
+
+/* ---------------------------------------------------------
+   NOISE
+--------------------------------------------------------- */
+
+.hv-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hv-grid {
+    background-size: 45px 45px;
+  }
+}

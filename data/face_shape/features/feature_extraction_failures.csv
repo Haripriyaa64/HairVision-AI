@@ -1,0 +1,3 @@
+split,class,image,error
+train,oval,data\face_shape\dataset\train\oval\Oval(720).jpg,no_face
+test,oblong,data\face_shape\dataset\test\oblong\Oblong(70).jpg,no_face

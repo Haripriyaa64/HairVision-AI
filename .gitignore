@@ -1,0 +1,64 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# ML
+*.pt
+*.pth
+*.ckpt
+*.onnx
+models/checkpoints/*
+models/production/*
+
+# Data
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+
+# Images / generated files
+uploads/
+outputs/
+generated/
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+.coverage
+htmlcov/
+
+# Secrets
+*.pem
+*.key

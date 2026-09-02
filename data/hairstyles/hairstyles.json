@@ -1,0 +1,412 @@
+{
+  "version": "1.0",
+  "face_shapes": [
+    "heart",
+    "oblong",
+    "oval",
+    "round",
+    "square"
+  ],
+  "genders": [
+    "men",
+    "women"
+  ],
+  "hairstyles": [
+
+    {
+      "id": "men-textured-crop",
+      "name": "Textured Crop",
+      "gender": "men",
+      "length": "short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.88,
+        "oblong": 0.93,
+        "oval": 0.95,
+        "round": 0.84,
+        "square": 0.92
+      },
+      "maintenance": "low",
+      "tags": ["modern", "textured", "clean"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-low-taper",
+      "name": "Low Taper",
+      "gender": "men",
+      "length": "short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.86,
+        "oblong": 0.91,
+        "oval": 0.94,
+        "round": 0.89,
+        "square": 0.95
+      },
+      "maintenance": "medium",
+      "tags": ["modern", "fade", "clean"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-mid-fade",
+      "name": "Mid Fade",
+      "gender": "men",
+      "length": "short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.80,
+        "oblong": 0.84,
+        "oval": 0.93,
+        "round": 0.91,
+        "square": 0.96
+      },
+      "maintenance": "medium",
+      "tags": ["fade", "sharp", "modern"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-high-fade",
+      "name": "High Fade",
+      "gender": "men",
+      "length": "short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.72,
+        "oblong": 0.65,
+        "oval": 0.90,
+        "round": 0.94,
+        "square": 0.95
+      },
+      "maintenance": "medium",
+      "tags": ["fade", "sharp", "bold"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-side-part",
+      "name": "Classic Side Part",
+      "gender": "men",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.88,
+        "oblong": 0.90,
+        "oval": 0.96,
+        "round": 0.78,
+        "square": 0.92
+      },
+      "maintenance": "medium",
+      "tags": ["classic", "formal", "clean"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-quiff",
+      "name": "Modern Quiff",
+      "gender": "men",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.87,
+        "oblong": 0.68,
+        "oval": 0.95,
+        "round": 0.94,
+        "square": 0.93
+      },
+      "maintenance": "medium",
+      "tags": ["volume", "modern", "stylish"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-messy-fringe",
+      "name": "Messy Fringe",
+      "gender": "men",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.91,
+        "oblong": 0.94,
+        "oval": 0.92,
+        "round": 0.87,
+        "square": 0.86
+      },
+      "maintenance": "medium",
+      "tags": ["messy", "casual", "modern"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-curly-top",
+      "name": "Curly Textured Top",
+      "gender": "men",
+      "length": "medium",
+      "textures": ["curly"],
+      "face_shape_scores": {
+        "heart": 0.87,
+        "oblong": 0.93,
+        "oval": 0.95,
+        "round": 0.84,
+        "square": 0.90
+      },
+      "maintenance": "medium",
+      "tags": ["curly", "textured", "volume"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-buzz-cut",
+      "name": "Buzz Cut",
+      "gender": "men",
+      "length": "very-short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.70,
+        "oblong": 0.58,
+        "oval": 0.92,
+        "round": 0.69,
+        "square": 0.97
+      },
+      "maintenance": "very-low",
+      "tags": ["minimal", "sharp", "low-maintenance"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-long-flow",
+      "name": "Long Flow",
+      "gender": "men",
+      "length": "long",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.89,
+        "oblong": 0.91,
+        "oval": 0.95,
+        "round": 0.78,
+        "square": 0.90
+      },
+      "maintenance": "high",
+      "tags": ["long", "flow", "natural"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "men-undercut",
+      "name": "Undercut",
+      "gender": "men",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.78,
+        "oblong": 0.73,
+        "oval": 0.92,
+        "round": 0.90,
+        "square": 0.95
+      },
+      "maintenance": "medium",
+      "tags": ["undercut", "modern", "sharp"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-long-layers",
+      "name": "Long Layered Hair",
+      "gender": "women",
+      "length": "long",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.93,
+        "oblong": 0.95,
+        "oval": 0.97,
+        "round": 0.90,
+        "square": 0.92
+      },
+      "maintenance": "medium",
+      "tags": ["layers", "elegant", "modern"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-soft-layers",
+      "name": "Soft Layers",
+      "gender": "women",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.94,
+        "oblong": 0.93,
+        "oval": 0.98,
+        "round": 0.91,
+        "square": 0.90
+      },
+      "maintenance": "medium",
+      "tags": ["soft", "layers", "natural"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-curtain-bangs",
+      "name": "Curtain Bangs",
+      "gender": "women",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.95,
+        "oblong": 0.96,
+        "oval": 0.97,
+        "round": 0.92,
+        "square": 0.88
+      },
+      "maintenance": "medium",
+      "tags": ["bangs", "soft", "modern"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-bob",
+      "name": "Classic Bob",
+      "gender": "women",
+      "length": "short",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.89,
+        "oblong": 0.88,
+        "oval": 0.97,
+        "round": 0.73,
+        "square": 0.78
+      },
+      "maintenance": "medium",
+      "tags": ["bob", "clean", "classic"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-lob",
+      "name": "Long Bob",
+      "gender": "women",
+      "length": "medium",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.91,
+        "oblong": 0.92,
+        "oval": 0.98,
+        "round": 0.88,
+        "square": 0.90
+      },
+      "maintenance": "medium",
+      "tags": ["lob", "modern", "versatile"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-pixie",
+      "name": "Pixie Cut",
+      "gender": "women",
+      "length": "very-short",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.93,
+        "oblong": 0.75,
+        "oval": 0.98,
+        "round": 0.70,
+        "square": 0.91
+      },
+      "maintenance": "medium",
+      "tags": ["short", "bold", "modern"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-wavy-layers",
+      "name": "Soft Wavy Layers",
+      "gender": "women",
+      "length": "long",
+      "textures": ["wavy"],
+      "face_shape_scores": {
+        "heart": 0.94,
+        "oblong": 0.96,
+        "oval": 0.98,
+        "round": 0.93,
+        "square": 0.91
+      },
+      "maintenance": "medium",
+      "tags": ["wavy", "soft", "layered"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-curly-shag",
+      "name": "Curly Shag",
+      "gender": "women",
+      "length": "medium",
+      "textures": ["curly", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.90,
+        "oblong": 0.91,
+        "oval": 0.96,
+        "round": 0.89,
+        "square": 0.94
+      },
+      "maintenance": "medium",
+      "tags": ["curly", "shag", "textured"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-high-ponytail",
+      "name": "High Ponytail",
+      "gender": "women",
+      "length": "long",
+      "textures": ["straight", "wavy", "curly"],
+      "face_shape_scores": {
+        "heart": 0.84,
+        "oblong": 0.73,
+        "oval": 0.95,
+        "round": 0.90,
+        "square": 0.91
+      },
+      "maintenance": "low",
+      "tags": ["ponytail", "clean", "sporty"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-side-swept",
+      "name": "Side Swept Layers",
+      "gender": "women",
+      "length": "long",
+      "textures": ["straight", "wavy"],
+      "face_shape_scores": {
+        "heart": 0.94,
+        "oblong": 0.90,
+        "oval": 0.97,
+        "round": 0.94,
+        "square": 0.91
+      },
+      "maintenance": "medium",
+      "tags": ["side-swept", "elegant", "volume"],
+      "try_on_ready": false
+    },
+
+    {
+      "id": "women-blunt-cut",
+      "name": "Blunt Cut",
+      "gender": "women",
+      "length": "medium",
+      "textures": ["straight"],
+      "face_shape_scores": {
+        "heart": 0.78,
+        "oblong": 0.89,
+        "oval": 0.95,
+        "round": 0.73,
+        "square": 0.86
+      },
+      "maintenance": "medium",
+      "tags": ["blunt", "sharp", "minimal"],
+      "try_on_ready": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+V2 XGBoost
+Accuracy: 54.20%
+Macro F1: 53.99%
+
+
+Our current face-shape model achieves 54.36% accuracy and 53.75% Macro F1 on a completely locked 997-image test set.
+
+Important final-test result
+
+We already evaluated the model on the locked 997 images:
+
+Accuracy: 54.36%
+Macro F1: 53.75%
+
+That test set remains the final unbiased evaluation set.
+
+
+Photo
+ ↓
+Face Detection
+ ↓
+478 Face Landmarks
+ ↓
+21 V2 Features
+ ↓
+XGBoost V2
+ ↓
+Confidence Calibration
+ ↓
+Face Shape + Confidence
