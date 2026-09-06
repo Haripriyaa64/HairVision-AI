@@ -1,21 +1,14 @@
+// ============================================================
+// HAIRVISION AI — API CLIENT
+// ============================================================
+
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
 
-export interface HealthResponse {
-  name?: string;
-  status: string;
-  service?: string;
-  version?: string;
-}
-
-export interface AnalyzeResponse {
-  success: boolean;
-  face_shape: FaceShape;
-  confidence: number;
-  raw_confidence: number;
-  probabilities: Record<FaceShape, number>;
-  features_used: number;
-}
+// ============================================================
+// TYPES
+// ============================================================
 
 export type FaceShape =
   | "heart"
@@ -24,7 +17,19 @@ export type FaceShape =
   | "round"
   | "square";
 
-export type Gender = "men" | "women";
+export type Gender =
+  | "men"
+  | "women";
+
+export interface AnalyzeResponse {
+  success?: boolean;
+  face_shape: FaceShape;
+  confidence: number;
+  probabilities: Record<
+    FaceShape,
+    number
+  >;
+}
 
 export interface HairstyleRecommendation {
   id: string;
@@ -35,60 +40,80 @@ export interface HairstyleRecommendation {
   match_score: number;
   maintenance: string;
   tags: string[];
-  try_on_ready: boolean;
+  try_on_ready?: boolean;
 }
 
-export interface RecommendationResponse {
+export interface TryOnResponse {
   success: boolean;
-  face_shape: FaceShape;
+  hairstyle_id: string;
+  hairstyle_name: string;
   gender: Gender;
-  count: number;
-  recommendations: HairstyleRecommendation[];
+  image: string;
 }
 
-/* -------------------------------------------------------
-   HEALTH
-------------------------------------------------------- */
+// ============================================================
+// HEALTH
+// ============================================================
 
-export async function getHealth(): Promise<HealthResponse> {
-  const response = await fetch(`${API_URL}/health`, {
-    cache: "no-store",
-  });
+export async function getHealth() {
+
+  const response = await fetch(
+    `${API_URL}/health`,
+    {
+      method: "GET",
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
-    throw new Error("Unable to connect to HairVision AI API");
+    throw new Error(
+      "Backend unavailable."
+    );
   }
 
   return response.json();
 }
 
-/* -------------------------------------------------------
-   FACE ANALYSIS
-------------------------------------------------------- */
+// ============================================================
+// FACE ANALYSIS
+// ============================================================
 
 export async function analyzeFace(
-  file: File,
+  file: File
 ): Promise<AnalyzeResponse> {
+
   const formData = new FormData();
 
-  formData.append("file", file);
+  formData.append(
+    "file",
+    file
+  );
 
-  const response = await fetch(`${API_URL}/analyze`, {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    `${API_URL}/analyze`,
+    {
+      method: "POST",
+      body: formData,
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
-    let message = "Face analysis failed.";
+
+    let message =
+      "Unable to analyze your photo.";
 
     try {
-      const data = await response.json();
 
-      if (typeof data?.detail === "string") {
-        message = data.detail;
-      }
+      const data =
+        await response.json();
+
+      message =
+        data.detail ||
+        message;
+
     } catch {
-      // Keep default error message.
+      // Keep default message
     }
 
     throw new Error(message);
@@ -97,39 +122,128 @@ export async function analyzeFace(
   return response.json();
 }
 
-/* -------------------------------------------------------
-   HAIRSTYLE RECOMMENDATIONS
-------------------------------------------------------- */
+// ============================================================
+// HAIRSTYLE RECOMMENDATIONS
+// ============================================================
 
 export async function getRecommendations(
   faceShape: FaceShape,
   gender: Gender,
-  limit = 8,
-): Promise<RecommendationResponse> {
-  const response = await fetch(`${API_URL}/recommend`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      face_shape: faceShape,
-      gender,
-      limit,
-    }),
-    cache: "no-store",
-  });
+  limit: number = 8
+): Promise<HairstyleRecommendation[]> {
+
+  const response = await fetch(
+    `${API_URL}/recommend`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type":
+          "application/json",
+      },
+      body: JSON.stringify({
+        face_shape: faceShape,
+        gender,
+        limit,
+      }),
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
-    let message = "Unable to generate hairstyle recommendations.";
+
+    let message =
+      "Unable to load hairstyle recommendations.";
 
     try {
-      const data = await response.json();
 
-      if (typeof data?.detail === "string") {
-        message = data.detail;
-      }
+      const data =
+        await response.json();
+
+      message =
+        data.detail ||
+        message;
+
     } catch {
-      // Keep default error message.
+      // Keep default message
+    }
+
+    throw new Error(message);
+  }
+
+  const data =
+    await response.json();
+
+  // Supports both:
+  //
+  // { recommendations: [...] }
+  //
+  // and
+  //
+  // [...]
+  //
+  // This keeps the frontend compatible
+  // with the current backend.
+
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  return data.recommendations ?? [];
+}
+
+// ============================================================
+// AI HAIRSTYLE TRY-ON
+// ============================================================
+
+export async function tryOnHairstyle(
+  file: File,
+  hairstyleId: string,
+  gender: Gender
+): Promise<TryOnResponse> {
+
+  const formData =
+    new FormData();
+
+  formData.append(
+    "image",
+    file
+  );
+
+  formData.append(
+    "hairstyle_id",
+    hairstyleId
+  );
+
+  formData.append(
+    "gender",
+    gender
+  );
+
+  const response = await fetch(
+    `${API_URL}/try-on`,
+    {
+      method: "POST",
+      body: formData,
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+
+    let message =
+      "AI hairstyle generation failed.";
+
+    try {
+
+      const data =
+        await response.json();
+
+      message =
+        data.detail ||
+        message;
+
+    } catch {
+      // Keep default message
     }
 
     throw new Error(message);
