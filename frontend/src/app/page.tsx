@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 
+import Link from "next/link";
+
 import {
   AnimatePresence,
   motion,
@@ -468,6 +470,14 @@ export default function Home() {
           <span>
             Try-On
           </span>
+
+          <Link
+            href="/ar-try-on"
+            className="flex items-center gap-1.5 transition-colors hover:text-white"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+            AR Try-On
+          </Link>
 
           <a
             href="/find-salons"
@@ -1847,15 +1857,25 @@ function TryOnModal({
             </div>
 
 
-            <button
-              type="button"
-              onClick={onGenerate}
-              disabled={
-                loading ||
-                !!result
-              }
-              className="flex min-w-[210px] items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs font-semibold text-black transition hover:scale-[1.02] hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+
+              <Link
+                href={`/ar-try-on?style=${encodeURIComponent(style.id)}&name=${encodeURIComponent(style.name)}`}
+                className="flex min-w-[190px] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 text-xs font-semibold text-white/75 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
+              >
+                <Camera size={15} />
+                Try this style in AR
+              </Link>
+
+              <button
+                type="button"
+                onClick={onGenerate}
+                disabled={
+                  loading ||
+                  !!result
+                }
+                className="flex min-w-[210px] items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs font-semibold text-black transition hover:scale-[1.02] hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
+              >
 
               {loading ? (
 
@@ -1891,7 +1911,9 @@ function TryOnModal({
 
               )}
 
-            </button>
+              </button>
+
+            </div>
 
           </div>
 
